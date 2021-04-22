@@ -1,12 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Header with megamenu nav</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css'><link rel="stylesheet" href="./style.css">
+
 </head>
-<body>
-    
+<body style="background: darkslategray">
+
+<header class="header bg-gray-200 grid grid-cols-3 items-center px-4">
+  <div class="logo w-40">
+    <img src="https://schmuckado-de.webpreview.at/pub/media/logo/stores/2/schmuckado-transp.png">
+  </div>
+  <nav 
+       x-data
+       class="main-menu flex"
+  >
+    <template x-for="_ in Array.from({ length: 4 })">
+      <li class="collection list-none grid px-5 py-3">
+        <a href="#">Ladies</a>
+        <template x-for="item in Array.from({ length: 5 })">
+            <ul class="subcollection hidden___ bg-red-700">
+              <li class="subcollection-item">
+                <a href="#">
+                  Ladies jewelery
+                </a>
+                <ul>
+                  <li class="sub-subcollection-item">
+                    <a href="#">
+                      Ladies armbands
+                    </a>
+                  </li>            
+                </ul>
+              </li>        
+            </ul>
+        </template>
+      </li>
+    </template>    
+  </nav>
+  <nav class="side-menu list-none flex ml-auto">
+    <li class="search_ pl-2">
+      <a href="#">🔍</a>  
+    </li>
+    <li class="user-account_ pl-2">
+      <a href="#">👤</a>    
+    </li>
+    <li class="wishlist_ pl-2">
+      <a href="#">❤️</a>    
+    </li>
+    <li class="shopping-cart_ pl-2">
+      <a href="#">🛍️</a>    
+    </li>
+  </nav>
+</header>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js'></script>
+  <script>
+    'use strict';
+
+    const initHeaderNavigation = () => {
+      return {
+        mobilePanelActiveId: null,
+        hoverPanelActiveId: null,
+        open: false,
+        setActiveMenu(menuNode) {
+          Array.from(menuNode.querySelectorAll('a').filter(link => {
+            return link.href === window.localtion.href.split('?')[0];
+          }).map(item => {
+            item.classList.add('underline');
+            item.closest('div.level-0';) && item.closest('div.level-0').querySelector('a.level-0').classList.add('underline'); 
+          }))
+        }
+      }
+    }
+  </script>
 </body>
 </html>
